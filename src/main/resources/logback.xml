@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- For assistance related to logback-translator or configuration -->
+<!-- files in general, please contact the logback user mailing list -->
+<!-- at http://www.qos.ch/mailman/listinfo/logback-user -->
+<!-- -->
+<!-- For professional support please see -->
+<!-- http://www.qos.ch/shop/products/professionalSupport -->
+<!-- -->
+<configuration>
+	<!-- set the LOG_FILE property that will be used by the base.xml include 
+		below -->
+	<property name="LOG_FILE" value="logs/application_log" /> 
+	<!-- pick up reasonable defaults provided by Spring Boot -->
+	<include resource="org/springframework/boot/logging/logback/base.xml" />
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<org.springframework>DEBUG</org.springframework>
+		<encoder>
+			<pattern>%d [%t] %-5p %c - %m%n</pattern>
+		</encoder>
+	</appender>
+	<root level="DEBUG">
+		<appender-ref ref="stdout" />
+	</root>
+</configuration>
